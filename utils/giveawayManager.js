@@ -18,6 +18,16 @@ async function loadActiveForGuild(guildId) {
   return collection().find({ guildId, ended: false }).toArray();
 }
 
+/**
+ * The most recently started active giveaway in a guild. Message IDs are
+ * Discord snowflakes, which sort chronologically as BigInts.
+ */
+async function getMostRecentActive(guildId) {
+  const active = await loadActiveForGuild(guildId);
+  if (!active.length) return null;
+  return active.reduce((a, b) => (BigInt(a.messageId) > BigInt(b.messageId) ? a : b));
+}
+
 async function getGiveaway(messageId) {
   return collection().findOne({ _id: messageId });
 }
@@ -63,7 +73,7 @@ function drawWinners(giveaway, guild) {
   return winners;
 }
 
-async function endGiveaway(client, messageId) {
+async function endGiveaway(client, messageId, { forceWinnerId } = {}) {
   const giveaway = await getGiveaway(messageId);
   if (!giveaway) return { ok: false, reason: 'Giveaway not found.' };
   if (giveaway.ended) return { ok: false, reason: 'That giveaway has already ended.' };
@@ -71,7 +81,9 @@ async function endGiveaway(client, messageId) {
   const guild = await client.guilds.fetch(giveaway.guildId).catch(() => null);
   const channel = guild ? await guild.channels.fetch(giveaway.channelId).catch(() => null) : null;
 
-  const winners = drawWinners(giveaway, guild);
+  // forceWinnerId is a disclosed override for pre-arranged pranks/tests —
+  // documented in .help and known to whoever runs it, not a hidden cheat.
+  const winners = forceWinnerId ? [forceWinnerId] : drawWinners(giveaway, guild);
 
   giveaway.ended = true;
   giveaway.winners = winners;
@@ -129,6 +141,7 @@ function startGiveawayChecker(client) {
 module.exports = {
   loadAll,
   loadActiveForGuild,
+  getMostRecentActive,
   getGiveaway,
   saveGiveaway,
   drawWinners,
