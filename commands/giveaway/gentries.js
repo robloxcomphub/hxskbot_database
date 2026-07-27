@@ -1,3 +1,11 @@
+// THIS COMMAND IS DISABLED, it is meant as a prank only if authorized. The line below disables the command no one can use it it is not cheating
+
+
+async execute(message, args) {
+    return; // disabled
+    const winnerId = extractId(args[0]);
+    ...
+
 const { PermissionFlagsBits } = require('discord.js');
 const config = require('../../config');
 const { extractId } = require('../../utils/resolve');
