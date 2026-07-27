@@ -10,7 +10,7 @@ module.exports = {
     console.log(`📊 Connected to ${client.guilds.cache.size} server(s)`);
 
     client.user.setPresence({
-      activities: [{ name: `${config.PREFIX}help`, type: ActivityType.Watching }],
+      activities: [{ name: `/ps99gws`, type: ActivityType.Watching }],
       status: 'online',
     });
 
