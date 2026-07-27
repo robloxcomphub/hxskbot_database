@@ -17,13 +17,13 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(config.COLORS.PRIMARY)
-      .setTitle('Hxsk Bot — Commands')
+      .setTitle('Hxsk Bot Commands')
       .setThumbnail(client.user.displayAvatarURL())
       .setFooter({ text: `Prefix: ${config.PREFIX}  •  e.g. ${config.PREFIX}ping` });
 
     for (const [category, commands] of client.categories) {
       const label = CATEGORY_LABELS[category] || category;
-      const list = commands.map(cmd => `\`${cmd.usage || config.PREFIX + cmd.name}\` — ${cmd.description}`).join('\n');
+      const list = commands.map(cmd => `\`${cmd.usage || config.PREFIX + cmd.name}\` / ${cmd.description}`).join('\n');
       if (list) embed.addFields({ name: label, value: list });
     }
 
