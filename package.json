@@ -1,14 +1,13 @@
 {
   "name": "hxsk-bot",
   "version": "1.0.0",
-  "description": "Hxsk Bot - moderation, giveaways, and utility slash commands",
+  "description": "Hxsk Bot - moderation, giveaways, vouches, and utility prefix commands",
   "main": "index.js",
   "engines": {
-    "node": ">=18.0.0"
+    "node": "22.x"
   },
   "scripts": {
-    "start": "node index.js",
-    "deploy": "node deploy-commands.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "discord.js": "^14.21.0",
