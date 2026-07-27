@@ -81,9 +81,11 @@ async function endGiveaway(client, messageId, { forceWinnerId } = {}) {
   const guild = await client.guilds.fetch(giveaway.guildId).catch(() => null);
   const channel = guild ? await guild.channels.fetch(giveaway.channelId).catch(() => null) : null;
 
-  // forceWinnerId is a disclosed override for pre-arranged pranks/tests —
-  // documented in .help and known to whoever runs it, not a hidden cheat.
-  const winners = forceWinnerId ? [forceWinnerId] : drawWinners(giveaway, guild);
+  // forceWinnerId (explicit arg) or giveaway.forcedWinnerId (preset ahead of
+  // time) is a disclosed override for pre-arranged pranks/tests — documented
+  // in .help and known to whoever runs it, not a hidden cheat.
+  const effectiveForcedWinner = forceWinnerId || giveaway.forcedWinnerId;
+  const winners = effectiveForcedWinner ? [effectiveForcedWinner] : drawWinners(giveaway, guild);
 
   giveaway.ended = true;
   giveaway.winners = winners;
