@@ -27,7 +27,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(config.COLORS.SUCCESS)
-      .setTitle(`🏆 Vouch Leaderboard — ${message.guild.name}`)
+      .setTitle(`🏆 Vouch Leaderboard / ${message.guild.name}`)
       .setDescription(lines.join('\n'));
 
     await message.reply({ embeds: [embed] });
