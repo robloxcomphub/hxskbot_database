@@ -1,5 +1,10 @@
 const config = require('../config');
 
+// Only members with this role can use restricted commands (anything below
+// with a "permissions" array — currently moderation + giveaway-management).
+// General commands like .ping/.help/.vouch stay open to everyone.
+const STAFF_ROLE_ID = '1530304274901368894';
+
 module.exports = {
   name: 'messageCreate',
   async execute(message) {
@@ -14,11 +19,8 @@ module.exports = {
     const command = message.client.commands.get(commandName);
     if (!command) return;
 
-    if (command.permissions?.length) {
-      const missing = command.permissions.filter(perm => !message.member.permissions.has(perm));
-      if (missing.length) {
-        return message.reply("❌ You don't have permission to use that command.");
-      }
+    if (command.permissions?.length && !message.member.roles.cache.has(STAFF_ROLE_ID)) {
+      return message.reply("❌ You don't have permission to use that command.");
     }
 
     try {
