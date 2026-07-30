@@ -5,6 +5,8 @@ module.exports = {
 
   // Members with this role get +1 extra giveaway entry automatically.
   GIVEAWAY_BONUS_ROLE_ID: '1530338067196678284',
+  
+  WELCOME_PING_CHANNEL_ID: '1530291048906231859',
 
   // Brand colors used across embeds.
   COLORS: {
@@ -19,5 +21,4 @@ module.exports = {
   GIVEAWAY_EMOJI: '🎉',
 };
 
-// Channel where new members get pinged (then the ping is deleted) on join.
-WELCOME_PING_CHANNEL_ID: '1530291048906231859',
+
