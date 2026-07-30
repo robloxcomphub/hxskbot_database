@@ -1,12 +1,6 @@
-// Central config for Hxsk Bot.
-// IDs that are specific to your server live here so you don't have to
-// hunt through every command file to change them.
-
 module.exports = {
-  // The character(s) that trigger a command, e.g. ".ban @user spamming"
   PREFIX: '.',
 
-  // Channel that receives every moderation action log embed.
   MOD_LOG_CHANNEL_ID: '1530929199164952659',
 
   // Members with this role get +1 extra giveaway entry automatically.
@@ -24,3 +18,6 @@ module.exports = {
   // Default emoji used to enter giveaways via button.
   GIVEAWAY_EMOJI: '🎉',
 };
+
+// Channel where new members get pinged (then the ping is deleted) on join.
+WELCOME_PING_CHANNEL_ID: '1530291048906231859',
