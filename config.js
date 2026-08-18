@@ -4,9 +4,9 @@ module.exports = {
   MOD_LOG_CHANNEL_ID: '1530929199164952659',
 
   // Members with this role get +1 extra giveaway entry automatically.
-  GIVEAWAY_BONUS_ROLE_ID: '1530338067196678284',
+  GIVEAWAY_BONUS_ROLE_ID: '1539308583030882424',
   
-  WELCOME_PING_CHANNEL_ID: '1530291048906231859',
+  WELCOME_PING_CHANNEL_ID: '1537128183671816313',
 
   // Brand colors used across embeds.
   COLORS: {
