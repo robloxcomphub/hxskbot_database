@@ -3,7 +3,7 @@ const config = require('../config');
 // Only members with this role can use restricted commands (anything below
 // with a "permissions" array — currently moderation + giveaway-management).
 // General commands like .ping/.help/.vouch stay open to everyone.
-const STAFF_ROLE_ID = '1530304274901368894';
+const STAFF_ROLE_ID = '1537132569731145858';
 
 module.exports = {
   name: 'messageCreate',
