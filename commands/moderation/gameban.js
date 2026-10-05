@@ -55,7 +55,7 @@ module.exports = {
         privateReason: `${reason} | Banned by ${message.author.tag}`,
         displayReason: reason,
         durationSeconds: durationMs ? Math.round(durationMs / 1000) : undefined,
-        excludeAltAccounts: true,
+        excludeAltAccounts: false,
       });
     } catch (err) {
       console.error(err);
